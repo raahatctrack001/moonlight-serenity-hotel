@@ -15,7 +15,7 @@ export default function Navbar(){
         return <GlobalLoader isLoading={isLoaded} />
     
     return <div className='w-full flex justify-between items-center px-5 py-1'>
-        <h3> Moonlight Serenity Hotel </h3>
+        <h3 onClick={()=>router.push("/")}> Moonlight Serenity Hotel </h3>
         <Searchbar />
         <div className='flex justify-between items-center gap-3'>
             <Theme />
