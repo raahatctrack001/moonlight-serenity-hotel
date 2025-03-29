@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import GlobalLoader from './GlobalLoader';
 import Searchbar from './Searchbar';
 import { Theme } from './Theme';
+import { Navoptions } from './Navoptions';
 
 export default function Navbar(){
     const { isLoaded, userId } = useAuth();
@@ -19,6 +20,7 @@ export default function Navbar(){
         <Searchbar />
         <div className='flex justify-between items-center gap-3'>
             <Theme />
+            <Navoptions />
             {userId ? <UserButton /> : <Button onClick={()=>router.push("/sign-in")}> SignIn </Button>}
         </div>
     </div>
