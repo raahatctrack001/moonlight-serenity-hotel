@@ -1,12 +1,13 @@
 "use client"
 import {useAuth, UserButton } from '@clerk/nextjs'
 import React from 'react'
-import { Button } from '../button';
+
 import { useRouter } from 'next/navigation';
 import GlobalLoader from './GlobalLoader';
 import Searchbar from './Searchbar';
 import { Theme } from './Theme';
 import { Navoptions } from './Navoptions';
+import { Button } from '../ui/button';
 
 export default function Navbar(){
     const { isLoaded, userId } = useAuth();

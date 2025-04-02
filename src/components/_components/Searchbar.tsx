@@ -1,5 +1,5 @@
+import { Input } from "../ui/input";
 
-import { Input } from "../input";
 
 export default function Searchbar(){
     return <div className="flex justify-center ">
