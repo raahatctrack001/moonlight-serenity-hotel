@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const formSchema = z.object({
+export const formSchema = z.object({
   title: z.string().min(1, { message: "Title cannot be empty!" }),
   description: z.string().min(5, { message: "Description should be a long string!" }),
   image: z.string().min(1, { message: "Please upload image!" }),
@@ -33,7 +33,7 @@ const formSchema = z.object({
   bookings: z.boolean().optional(),
 });
 
-export default function HotelForm() {
+export default function HotelForm({hotel}) {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
