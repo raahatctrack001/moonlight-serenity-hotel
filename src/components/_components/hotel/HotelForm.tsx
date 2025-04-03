@@ -8,7 +8,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import UploadThing from "../UploadThing";
+import { UploadButton } from "@/lib/uploadthing";
+import { useState } from "react";
+
 
 export const formSchema = z.object({
   title: z.string().min(1, { message: "Title cannot be empty!" }),
@@ -61,6 +63,8 @@ export default function HotelForm({hotel}) {
       bookings: false,
     },
   });
+
+  const [image, setImage] = useState<string | undefined> ("");
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log("formData:", values);
@@ -117,7 +121,32 @@ export default function HotelForm({hotel}) {
                   />
                 ))}
               </div>
-                <UploadThing />
+                
+              <FormField
+                control={form.control}
+                name="image"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-2xl">Upload Image</FormLabel>
+                    <FormControl>
+                    {image ? <> </> : <UploadButton
+                        className="max-w-md cursor-pointer bg-gray-600 text-white rounded-xl pb-2"
+                        endpoint="imageUploader"
+                        onClientUploadComplete={(res) => {
+                        // Do something with the response
+                        console.log("Files: ", res);
+                        alert("Upload Completed");
+                        }}
+                        onUploadError={(error: Error) => {
+                        // Do something with the error.
+                        alert(`ERROR! ${error.message}`);
+                        }}
+                    />}                      
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <Button type="submit" className="w-full">Submit</Button>
             </form>
           </Form>
