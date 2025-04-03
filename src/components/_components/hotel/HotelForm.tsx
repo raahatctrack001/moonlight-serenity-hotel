@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import UploadThing from "../UploadThing";
 
 export const formSchema = z.object({
   title: z.string().min(1, { message: "Title cannot be empty!" }),
@@ -116,11 +117,12 @@ export default function HotelForm({hotel}) {
                   />
                 ))}
               </div>
-  
+                <UploadThing />
               <Button type="submit" className="w-full">Submit</Button>
             </form>
           </Form>
         </CardContent>
+
       </Card>
     </div>
   );
